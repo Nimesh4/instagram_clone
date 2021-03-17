@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash_insta.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,13 +17,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier":"com.nikist.instagraam",
+      "config":{
+        "googleSignIn":{
+          "reservedClientId":"com.googleusercontent.apps.884589073231-77l5ebhr8tq4ssu3niiei4juups1vhjd"
+        }
+      },
+      "googleServicesFile":"./GoogleService-Info.plist"   
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FFFFFF"        
+      },
+      "package":"com.android.instagraam",
+      "googleServiceFile":"./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
