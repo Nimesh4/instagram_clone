@@ -9,7 +9,7 @@ const user = (state = {}, action: { type: any; payload: any }) => {
         case 'UPDATE_PASSWORD':
             return { ...state, password:action.payload }
         case 'UPDATE_USERNAME':
-            return { ...state, username:action.payload.toUpperCase().replace('','_')}
+            return { ...state, username:action.payload}
         default:
             return state
     }

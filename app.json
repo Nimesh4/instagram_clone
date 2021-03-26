@@ -4,7 +4,7 @@
     "slug": "instagram_clone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/splash_insta.png",
     "splash": {
       "image": "./assets/splash_insta.png",
       "resizeMode": "contain",

@@ -1,6 +1,7 @@
 import * as firebase from 'firebase'
 import db from '../config/firebase'
 import { orderBy } from 'lodash'
+import { FC } from 'react'
 
 
 export const updateEmail = (input: any) => {
@@ -15,8 +16,10 @@ export const updateUsername = (input: any) => {
     return { type:'UPDATE_USERNAME', payload: input }
 }
 
+
+
 export const signup = () => {
-    return async (dispatch: (arg0: { type: string; payload: { uid: string; username: any; email: any; posts:[]; bio: string; likes: number; photo: string } }) => void, getState: () => { (): any; new(): any; user: { username: any; email: any; password: any } }) => {
+    return async (dispatch , getState) => {
         try{
             const { username, email, password } = getState().user
             const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -46,22 +49,28 @@ export const signup = () => {
 
 }
 
+
 export const login = () => {
     return async (dispatch: (arg0: (dispatch: any) => Promise<void>) => void, getState: () => { (): any; new(): any; user: { email: any; password: any } }) => {
         try {
             const { email, password } = getState().user
             const response = await firebase.auth().signInWithEmailAndPassword(email, password)
             dispatch(getUser(response.user.uid))
+            
         }catch(e) {
             alert(e)
         }
     }
 }
 
-export const getUser = (uid: string | undefined) => {
-    return async (dispatch: (arg0: { type: string; payload: firebase.firestore.DocumentData | undefined }) => void) => {
+
+export const getUser = (uid) => {
+    return async (dispatch) => {
         try {
-            const userQuery = await db.collection('users').doc(uid).get()
+            const userQuery = await db
+                                    .collection('users')
+                                    .doc(uid)
+                                    .get()
             let user = userQuery.data()
 
             let posts = []
@@ -70,7 +79,7 @@ export const getUser = (uid: string | undefined) => {
                 posts.push(response.data())
             })
 
-            user.posts = orderBy(posts, 'data','desc')
+            user.posts = orderBy(posts, 'date','desc')
 
             dispatch({type:'LOGIN', payload:user})
         }catch(e){

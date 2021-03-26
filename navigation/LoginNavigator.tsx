@@ -1,16 +1,18 @@
 import React, {Component} from 'react'
-import { AppLoading } from 'expo'
 import { StyleSheet, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, HeaderTitle } from '@react-navigation/stack'
+import { useFonts } from '@use-expo/font'
+
 import Login from '../screens/AuthScreens/Login'
 import Signup from '../screens/AuthScreens/Signup'
-import { useFonts } from '@use-expo/font'
+import Welcome from '../screens/AuthScreens/Welcome'
+import StackNavigator from './StackNavigator'
 
 
 const Stack = createStackNavigator();
 
-const LoginNavigation = () => {
+export default function App()  {
 
     const [fontsLoaded] = useFonts({
 
@@ -24,14 +26,16 @@ const LoginNavigation = () => {
         return (
             <NavigationContainer>
                 <Stack.Navigator>
+                    <Stack.Screen name="Welcome" component={Welcome} options={{headerShown:false, title:"Welcome"}} />
                     <Stack.Screen name="Login"  component={Login} options={{headerShown:false, title:"Login"}} />
                     <Stack.Screen name="Signup" component={Signup} />
+                    <Stack.Screen name="StackNavigator" component={StackNavigator} options={{}} />
                 </Stack.Navigator>
             </NavigationContainer>
         )
     }
 }
 
-export default LoginNavigation
+
 
 const styles = StyleSheet.create({})

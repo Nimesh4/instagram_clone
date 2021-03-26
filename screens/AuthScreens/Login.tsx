@@ -12,15 +12,6 @@ const screenHeight = Dimensions.get('window').height
 const screenWidth = Dimensions.get('window').width
 
 
-// interface Navigation {
-//     navigate(destination:String):void;
-// }
-
-
-// interface LoginProps {
-//     navigation:Navigation;
-// }
-
 interface props {
     type:any;
     updateEmail:any
@@ -82,12 +73,12 @@ class Login extends React.Component <props>  {
             </TouchableOpacity>
 
             </View>
-
+{/* 
             <View style={styles.container}>
                 <FontAwesome.Button name="google" backgroundColor="transparent" style={{height:40, borderRadius:20, borderColor:"#0a66c2", borderWidth:2 }} color="#0a66c2" >
                     <Text>Login with Google </Text>
                 </FontAwesome.Button>
-            </View>
+            </View> */}
 
             </View>
 
