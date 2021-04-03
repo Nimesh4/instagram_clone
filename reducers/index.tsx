@@ -15,8 +15,22 @@ const user = (state = {}, action: { type: any; payload: any }) => {
     }
 }
 
+const post = (state = {}, action) => {
+    switch (action.type){
+        case 'UPDATE_POST_NEXT_PHOTO':
+            return { ...state, photos: action.payload }
+        case 'UPDATE_DESCRIPTION':
+            return { ...state, description: action.payload }
+        default:
+            return state
+    }
+}
+
+
+
 const rootReducer = combineReducers({
-    user
+    user,
+    post
 })
 
 export default rootReducer

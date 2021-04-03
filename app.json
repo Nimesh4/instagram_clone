@@ -4,18 +4,21 @@
     "slug": "instagram_clone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/splash_insta.png",
+    "icon": "./assets/splash.png",
+
     "splash": {
-      "image": "./assets/splash_insta.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
+
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
+    
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier":"com.nikist.instagraam",

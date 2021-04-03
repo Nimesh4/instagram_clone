@@ -38,12 +38,12 @@ class Signup extends React.Component <props> {
   render(){
     return (
       <View style={{   flex: 1,   alignItems: 'center'  }}>
-            <Image source={require('../../assets/backgrounds/back4.jpeg')} style={{   position:'absolute', zIndex:-1, width:screenWidth, height:screenHeight+50}} />
+            <Image source={require('../../assets/backgrounds/back4.jpeg')} style={ styles.img } />
               <View style={{width:screenWidth*0.9,  marginTop:10, }}>
-                <Text style={{left:15}}>Username</Text>
+                <Text style={{left:15}}> Username </Text>
               </View>
               <TextInput 
-              style={{height: 50, width:screenWidth*0.9,  color:'black', paddingHorizontal:20, margin:0, borderRadius:10, borderColor:'grey', borderWidth:1}}
+              style={styles.textinput}
               placeholderTextColor={'grey'}
               placeholder={'your username'}
               onChangeText={input=>this.props.updateUsername(input)}
@@ -53,7 +53,7 @@ class Signup extends React.Component <props> {
                 <Text style={{left:15}}>Email</Text>
               </View>
               <TextInput 
-              style={{height: 50, width:screenWidth*0.9,  color:'black', paddingHorizontal:20, margin:0, borderRadius:10, borderColor:'grey', borderWidth:1}}
+              style={styles.textinput}
               placeholderTextColor={'grey'}
               placeholder={'example@example.com'}
               onChangeText={input=>this.props.updateEmail(input)}
@@ -63,7 +63,7 @@ class Signup extends React.Component <props> {
                 <Text style={{left:15}}>Password</Text>
               </View>
               <TextInput 
-              style={{height: 50, width:screenWidth*0.9,  color:'black', paddingHorizontal:20, margin:0, borderRadius:10, borderColor:'grey', borderWidth:1}}
+              style={styles.textinput}
               placeholderTextColor={'grey'}
               placeholder={'Passcode123'}
               onChangeText={input=>this.props.updatePassword(input)}
@@ -74,7 +74,7 @@ class Signup extends React.Component <props> {
                 <Text style={{left:15}}>Repeat Password</Text>
               </View>
               <TextInput 
-              style={{height: 50, width:screenWidth*0.9,  color:'black', paddingHorizontal:20, margin:0, borderRadius:10, borderColor:'grey', borderWidth:1}}
+              style={styles.textinput}
               placeholderTextColor={'grey'}
               placeholder={'Repeat Passcode123'}
               onChangeText={input=>this.setState({repeat: input})}
@@ -105,7 +105,42 @@ export default connect (mapStateToProps, mapDispatchToProps)(Signup)
 
 const styles = StyleSheet.create({
     container:{
-
+        flex:1,
+        backgroundColor:'white',
+        alignItems:'center'
     },
+    textinput:{
+        height:50,
+        width:screenWidth*0.9,
+        backgroundColor:'#FAFAFA',
+        color:'black',
+        paddingHorizontal:20,
+        margin:0,
+        borderRadius:10,
+        borderColor:'grey',
+        borderWidth:1,
+    },
+    button:{
+        width:screenWidth*0.6,
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor:'#0095f6',
+        margin:10,
+        height:50,
+        paddingEnd:10,
+        borderRadius:30,
+        marginBottom:20
+    },
+    logo:{
+        fontSize:35,
+        fontFamily:'logo-font',
+        marginVertical:60,
+    },
+    img:{
+      position:'absolute',
+      zIndex:-1,
+      width:screenWidth,
+      height:screenHeight+50
+    }
 
 })

@@ -1,5 +1,5 @@
 Arguments: 
-  F:\Program Files (x86)\node.exe C:\Users\Nimesh\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @react-navigation/material-tabs react-native-paper
+  F:\Program Files (x86)\node.exe C:\Users\Nimesh\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-image-manipulater
 
 PATH: 
   C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\MinGW\bin;C:\Python37-32\python.exe;C:\Program Files\dotnet\;C:\Users\Nimesh\AppData\Local\Microsoft\WindowsApps;C:\adb;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Java\jre1.8.0_211\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\sqlite3;C:\src\flutter_windows_1.22.2-stable;F:\Program Files (x86)\;C:\Program Files\Java\jdk-15.0.2\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\Nimesh\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\Nimesh\AppData\Local\Programs\Python\Python38-32\;C:\Users\Nimesh\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Nimesh\AppData\Local\Microsoft\WindowsApps;C:\Users\Nimesh\.dotnet\tools;C:\mysql-init.txt;C:\src\flutter_windows_1.22.2-stable;C:\Users\Nimesh\AppData\Roaming\npm;C:\Users\Nimesh\AppData\Local\Android\Sdk;C:\Program Files\Java\jre1.8.0_211\bin;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@react-navigation%2fmaterial-tabs: Not found
+  Error: https://registry.yarnpkg.com/expo-image-manipulater: Not found
       at Request.params.callback [as _callback] (C:\Users\Nimesh\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
       at Request.self.callback (C:\Users\Nimesh\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
       at Request.emit (events.js:315:20)
@@ -38,12 +38,15 @@ npm manifest:
     },
     "dependencies": {
       "@mapbox/node-pre-gyp": "^1.0.0",
+      "@react-navigation/material-bottom-tabs": "^5.3.14",
       "@react-navigation/native": "^5.9.3",
       "@react-navigation/stack": "^5.14.3",
       "@types/lodash": "^4.14.168",
       "@use-expo/font": "^2.0.0",
       "expo": "~40.0.0",
       "expo-google-sign-in": "~8.4.0",
+      "expo-image-picker": "~9.2.0",
+      "expo-permissions": "~10.0.0",
       "expo-status-bar": "~1.0.3",
       "firebase": "^7.24.0",
       "lodash": "^4.17.21",
@@ -52,6 +55,7 @@ npm manifest:
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
       "react-native-elements": "^3.3.0",
       "react-native-gesture-handler": "^1.10.3",
+      "react-native-paper": "^4.7.2",
       "react-native-screens": "^2.18.1",
       "react-native-vector-icons": "^8.1.0",
       "react-native-web": "~0.13.12",
@@ -1165,6 +1169,14 @@ Lockfile:
       lodash "^4.17.19"
       to-fast-properties "^2.0.0"
   
+  "@callstack/react-theme-provider@^3.0.5":
+    version "3.0.5"
+    resolved "https://registry.yarnpkg.com/@callstack/react-theme-provider/-/react-theme-provider-3.0.5.tgz#a173e455e9603c9c45357a3b6ace1273086527ca"
+    integrity sha512-Iec+ybWN0FvNj87sD3oWo/49edGUP0UOSdMnzCJEFJIDYr992ECIuOV89burAAh2/ibPCxgLiK6dmgv2mO/8Tg==
+    dependencies:
+      deepmerge "^3.2.0"
+      hoist-non-react-statics "^3.3.0"
+  
   "@cnakazawa/watch@^1.0.3":
     version "1.0.4"
     resolved "https://registry.npmjs.org/@cnakazawa/watch/-/watch-1.0.4.tgz"
@@ -2143,6 +2155,11 @@ Lockfile:
       nanoid "^3.1.15"
       query-string "^6.13.6"
       react-is "^16.13.0"
+  
+  "@react-navigation/material-bottom-tabs@^5.3.14":
+    version "5.3.14"
+    resolved "https://registry.yarnpkg.com/@react-navigation/material-bottom-tabs/-/material-bottom-tabs-5.3.14.tgz#3929d35ed4e532aeba4e2af7ac45840df1b5ffac"
+    integrity sha512-4S+9QDZ3w5K390b5OELvwGO7TN6I0N5rD1KNVM3efirRRhB2aZsj6zyBO4anwE+JrDVg0BL9hO+Qd3bYTE9kMA==
   
   "@react-navigation/native@^3.8.4":
     version "3.8.4"
@@ -3689,6 +3706,14 @@ Lockfile:
     integrity sha512-7kf0Nsy+WSizJPIUUQIGK6qiKbpLRjm3YKrqREeGpYiebOyi51lWw78CM6ylcb+FN2vb9d/kTEzinAfTgsPQ7w==
     dependencies:
       invariant "^2.2.4"
+  
+  expo-image-picker@~9.2.0:
+    version "9.2.1"
+    resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-9.2.1.tgz#113a46bfc8ef9bf675e8700b1bf7b8472f4de516"
+    integrity sha512-IPrBY7+zgxUUZqjtLVfj+PTKMm6lmI48Z9b8BKJhY/gF49g/cDZwWN0mrg+3G3a3ug5TtIr+pektsNWp1V+T1g==
+    dependencies:
+      expo-permissions "~10.0.0"
+      uuid "7.0.2"
   
   expo-keep-awake@~8.4.0:
     version "8.4.0"
@@ -6251,10 +6276,19 @@ Lockfile:
       invariant "^2.2.4"
       prop-types "^15.7.2"
   
-  react-native-iphone-x-helper@^1.3.0:
+  react-native-iphone-x-helper@^1.3.0, react-native-iphone-x-helper@^1.3.1:
     version "1.3.1"
     resolved "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
     integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+  
+  react-native-paper@^4.7.2:
+    version "4.7.2"
+    resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.7.2.tgz#a40d1da87af5b030d45b525313cd703d490876ff"
+    integrity sha512-MOcDWjBOaknEpQgdm4fIOsRFIt4PJlMCgWlLk4kIe8Wv99/M0JIoxWABkAf4Lj5BuJgXjXdwr0DA/lhGY1BRoQ==
+    dependencies:
+      "@callstack/react-theme-provider" "^3.0.5"
+      color "^3.1.2"
+      react-native-iphone-x-helper "^1.3.1"
   
   react-native-ratings@^7.3.0:
     version "7.4.0"
@@ -7421,6 +7455,11 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.npmjs.org/utils-merge/-/utils-merge-1.0.1.tgz"
     integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  
+  uuid@7.0.2:
+    version "7.0.2"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
+    integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
   
   uuid@^3.3.2, uuid@^3.4.0:
     version "3.4.0"

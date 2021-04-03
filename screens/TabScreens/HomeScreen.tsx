@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, Button, TouchableOpacity, TextInput, Dimensions
 import {  AnyAction, bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getUser } from '../../actions/user'
+import { SafeAreaView } from 'react-navigation'
 
 
 interface props{
@@ -15,9 +16,9 @@ interface props{
 class HomeScreen extends React.Component  <props>{
     render(){
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <Text style={styles.text}> Home Screen  </Text>
-            </View>
+            </SafeAreaView>
         );
     }
 }

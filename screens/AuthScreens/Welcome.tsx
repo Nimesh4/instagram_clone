@@ -36,7 +36,7 @@ class Login extends React.Component <props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text> Waiting </Text>
+                <Text> Loading.. </Text>
             </View>
         );
     }
