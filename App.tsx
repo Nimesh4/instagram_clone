@@ -1,7 +1,5 @@
 
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { DefaultTheme, DarkTheme } from '@react-navigation/native'
+import React from 'react';;
 import SwitchNavigator from './navigation/LoginNavigator'
 import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers/index'
@@ -13,6 +11,7 @@ const store = createStore(reducer, middleware)
 
 
 export default function App() {
+
   return (
     <Provider store={store}>
         <SwitchNavigator />
@@ -21,11 +20,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

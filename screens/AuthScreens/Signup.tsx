@@ -38,6 +38,7 @@ class Signup extends React.Component <props> {
   render(){
     return (
       <View style={{   flex: 1,   alignItems: 'center'  }}>
+        
             <Image source={require('../../assets/backgrounds/back4.jpeg')} style={ styles.img } />
               <View style={{width:screenWidth*0.9,  marginTop:10, }}>
                 <Text style={{left:15}}> Username </Text>

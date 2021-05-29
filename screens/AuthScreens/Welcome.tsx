@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Button, TouchableOpacity, TextInput, Dimensions, Image } from 'react-native'
+import { Text, View, StyleSheet, Button, TouchableOpacity, TextInput, Dimensions, Image, StatusBar } from 'react-native'
 
 import { AnyAction, bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'react-redux'
@@ -36,7 +36,8 @@ class Login extends React.Component <props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text> Loading.. </Text>
+                 <StatusBar barStyle="light-content" backgroundColor="#000" />
+                <Text style={{color:'white'}}> Loading.. </Text>
             </View>
         );
     }
@@ -58,7 +59,7 @@ export default connect (mapStateToProps, mapDispatchProps)(Login)
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'white',
+        backgroundColor:'#131212',
         justifyContent:'center',
         alignItems:'center',
 

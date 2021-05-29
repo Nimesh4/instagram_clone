@@ -10,6 +10,8 @@ import PostScreen from '../screens/TabScreens/PostScreen'
 import SearchScreen from '../screens/TabScreens/SearchScreen'
 import NotificationsScreen from '../screens/TabScreens/NotificationsScreen'
 import ProfileScreen from '../screens/TabScreens/ProfileScreen'
+import { Icon } from 'react-native-elements';
+
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -24,15 +26,15 @@ export default function MyTabs() {
         >
             <Tab.Screen name="Home" component={HomeScreen}
              options={({ route }) => ({
-                 tabBarIcon: ({color, size}) => (
-                    <Ionicons name='home' color={color} size={25} />
+                 tabBarIcon: ({color, }) => (
+                    <AntDesign name='home' color={color} size={26} />
                  )
              }) }
             />
 
             <Tab.Screen name="Search" component={SearchScreen}
              options={({ route }) => ({
-                 tabBarIcon: ({color, size}) => (
+                 tabBarIcon: ({color, }) => (
                      <Ionicons name='search' color={color} size={25} />
                  )
              })}
@@ -40,7 +42,7 @@ export default function MyTabs() {
 
             <Tab.Screen name="Post" component={PostScreen}
              options={({ route }) => ({
-                 tabBarIcon: ({color, size}) => (
+                 tabBarIcon: ({color, }) => (
                     <AntDesign name='plussquare' color={color} size={24}  />
                  )
              })}
@@ -48,15 +50,18 @@ export default function MyTabs() {
 
             <Tab.Screen name="Notifications" component={NotificationsScreen}
              options={({ route }) => ({
-                 tabBarIcon: ({color, size}) => (
-                    <FontAwesome name='heart' color={'red'} size={24} />
-                 )
+                 
+                 tabBarIcon: ({color, }) => (
+                    <FontAwesome name='heart' color={color} size={24}/>
+                 ),
+                 
              }) }
             />
 
             <Tab.Screen name="Profile" component={ProfileScreen}
              options={({ route }) => ({
-                 tabBarIcon: ({color, size}) => (
+                 
+                 tabBarIcon: ({color, }) => (
                     <Ionicons name='person-sharp' color={color} size={25} />
                  )
              })}

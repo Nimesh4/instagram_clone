@@ -5,6 +5,7 @@ import {  AnyAction, bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { updateDescription } from '../../../actions/post'
 import { SafeAreaView } from 'react-navigation'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const screenHeight = Dimensions.get('window').height
 const screenWidth = Dimensions.get('window').width
@@ -24,12 +25,27 @@ class PostCheckout extends React.Component  <props>{
             <SafeAreaView style={styles.container}>
             <Image source={require('../../../assets/backgrounds/background-white.jpg')} style={styles.img}/>
                 <TextInput
-                 placeholderTextColor={'grey'}
-                 placeholder={'Type Your Decscription ..'}
+                 placeholderTextColor={'black'}
+                 placeholder={'Caption.. '}
                  onChangeText={input=>{this.props.updateDescription(input)}}
                  value={this.props.post.description}
                  style={styles.desc}
                  />
+
+                 <View>
+                    <ScrollView
+                     horizontal={true}
+                     alwaysBounceHorizontal={true}
+                     bounces={true}
+                     pagingEnabled={true}
+                    >
+                        {
+                         this.props.post.photos?.map (e =>
+                            <Image source={{uri: e}} style={{width:screenWidth, height:360,}} />
+                         )
+                        }
+                    </ScrollView>
+                 </View>
             </SafeAreaView>
         );
     }
@@ -53,16 +69,13 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'white',
-        //justifyContent:'center',
         alignItems:'center',
-
     },
     text:{
         fontSize:35,
         fontFamily:'logo-font',
         marginVertical:60,
         color:'#0095f6'
-
     },
     img:{
         position:'absolute',
@@ -73,7 +86,12 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     desc:{
-        backgroundColor:'red'
+        backgroundColor:'rgba(0,0,0,0.05)',
+        fontSize:20,
+        paddingVertical:15,
+        margin:20,
+        width:'95%',
+        borderRadius:10,
     }
 
 })

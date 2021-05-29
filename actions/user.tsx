@@ -1,11 +1,15 @@
 import * as firebase from 'firebase'
 import db from '../config/firebase'
 import { orderBy } from 'lodash'
-import { FC } from 'react'
+
 
 
 export const updateEmail = (input: any) => {
     return { type:'UPDATE_EMAIL', payload: input }
+}
+
+export const resetpassword = (input:any) => {
+    return { type:'RESET_PASSWORD', payload: input }
 }
 
 export const updatePassword = (input: any) => {
@@ -16,23 +20,38 @@ export const updateUsername = (input: any) => {
     return { type:'UPDATE_USERNAME', payload: input }
 }
 
+export const updatePhoto = (input) => {
+    return { type: 'UPDATE_PHOTO', payload:input }
+}
+
+export const updateQuote = (input) => {
+    return {type:'UPDATE_QUOTE', payload:input}
+}
+
+export const updateName = (name) => {
+    return {type: 'UPDATE_NAME', payload: name}
+}
+
 
 
 export const signup = () => {
     return async (dispatch , getState) => {
         try{
-            const { username, email, password } = getState().user
+            const { username, email, password , photo} = getState().user
             const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
 
             if(response.user?.uid) {
                 const user = {
-                    uid:response.user.uid,
-                    username:username,
-                    email:email,
-                    posts:[],
-                    bio:"",
-                    likes:0,
-                    photo:""
+                    uid: response.user.uid,
+                    username: username,
+                    email: email,
+                    posts: [],
+                    bio: "",
+                    likes: 0,
+                    photo: photo,
+                    savedPosts:[],
+                    followers:[],
+                    following:[],
                 }
                 await db
                  .collection('users')
@@ -64,7 +83,7 @@ export const login = () => {
 }
 
 
-export const getUser = (uid) => {
+export const getUser = (uid, type) => {
     return async (dispatch) => {
         try {
             const userQuery = await db
@@ -81,8 +100,73 @@ export const getUser = (uid) => {
 
             user.posts = orderBy(posts, 'date','desc')
 
-            dispatch({type:'LOGIN', payload:user})
+            if(type == 'PROFILE'){
+                dispatch({type: 'GET_PROFILE', payload:user})
+            }else{
+                dispatch({type:'LOGIN', payload:user})
+            }
         }catch(e){
+            alert(e)
+        }
+    }
+}
+
+
+export const followUser = (userToFollow) =>{
+    return async (dispatch, getState) => {
+        try{
+            const { uid } = getState().user
+
+            await db.collection('users').doc(uid).update({
+                following: firebase.firestore.FieldValue.arrayUnion(userToFollow)
+            })
+
+            await db.collection('users').doc(userToFollow).update({
+                followers: firebase.firestore.FieldValue.arrayUnion(uid)
+            })
+
+            dispatch(getUser(userToFollow, 'PROFILE'))
+        }
+        catch(e){
+            alert(e)
+        }
+    }
+}
+
+
+export  const unFollowUser = (userToFollow) => {
+    return async (dispatch, getState) => {
+        try{
+            //alert('Are You sure??')
+            const { uid } = getState().user
+
+            await db.collection('users').doc(uid).update({
+                following: firebase.firestore.FieldValue.arrayRemove(userToFollow)
+            })
+
+            await db.collection('users').doc(userToFollow).update({
+                followers: firebase.firestore.FieldValue.arrayRemove(uid)
+            })
+
+            dispatch(getUser(userToFollow, 'PROFILE'))
+        }
+        catch(e){
+            alert(e)
+        }
+
+    }
+}
+
+export const updateUser = () => {
+    return async ( dispatch, getState ) => {
+        const { uid, username, quote, photo, backgroundImage } = getState().user
+        try {
+                db.collection('users').doc(uid).update({
+                    usernme:username,
+                    quote: quote,
+                    photo: photo,
+                })
+        } catch (e) {
             alert(e)
         }
     }

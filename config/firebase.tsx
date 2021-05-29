@@ -2,6 +2,10 @@ import * as firebase from 'firebase'
 import "firebase/auth"
 require('firebase/firestore')
 
+passwordReset:email => {
+  return firebase.auth().sendPasswordResetEmail(email)
+}
+
 const firebaseConfig = {
     apiKey: "AIzaSyDuctSzNCC_LDEzyKOJZXD2eeB3VlLJjLY",
     authDomain: "instagram-clone-4369f.firebaseapp.com",
@@ -13,8 +17,10 @@ const firebaseConfig = {
     measurementId: "G-2XBEBVB4JP"
   };
 
+  
+
   firebase.initializeApp(firebaseConfig)
 
-  const db = firebase.firestore()
+  const db = firebase.firestore();
 
   export default db;

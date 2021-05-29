@@ -1,9 +1,9 @@
 import React, { Component, Dispatch } from 'react'
-import { Text,SafeAreaView, View, StyleSheet,  TouchableOpacity, TextInput, Dimensions, Image, Platform } from 'react-native'
+import { Text,SafeAreaView, View, StyleSheet,  TouchableOpacity, Dimensions, Image, Platform, StatusBar } from 'react-native'
 import * as Permissions from 'expo-permissions'
 import * as ImagePicker from 'expo-image-picker'
 
-import {  AnyAction, bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getUser } from '../../actions/user'
 
@@ -74,8 +74,13 @@ class PostScreen extends React.Component <props> {
     render(){
         return (
             <SafeAreaView style={ {flex:1} }>
+                <StatusBar barStyle="light-content" backgroundColor="#000" />
             <Image source={require('../../assets/backgrounds/background-white.jpg')} style={{justifyContent:'center',alignItems:'center', position:'absolute',zIndex:-1,width:screenWidth, height:screenHeight}} />
-                <View style= {(Platform.OS == 'ios') ? {width:screenWidth, height:55, borderBottomColor:'grey', borderBottomWidth:1} : {width:screenWidth, height:55,borderBottomColor:'grey', borderBottomWidth:1 , marginTop:30, justifyContent:'space-between', alignItems:'center', flexDirection:'row'}}>
+                <View style= {(Platform.OS == 'ios') 
+                ? 
+                {width:screenWidth, height:55} 
+                : 
+                {width:screenWidth, height:55, marginTop:30, justifyContent:'space-between', alignItems:"center",flexDirection:'row'}}>
                     <Text style={styles.text}> New Post </Text>
                     <TouchableOpacity style={{margin:10}}
                     onPress={() => this.uploadPost()} >
@@ -83,26 +88,28 @@ class PostScreen extends React.Component <props> {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.img}>
+                <View style={{width:screenWidth, height:360}}>
                     {
-                    (this.props.post.photos == undefined)?
-                    <TouchableOpacity style={styles.postimg} 
+                    (this.state.urlChosen == undefined)?
+                    <TouchableOpacity style={{width:screenWidth, height:360, justifyContent:'center', alignItems:'center'}} 
                      onPress={() => this.openLibrary()} >
                        <View style={styles.plus}>
                             <Text style={{color:'white' , fontSize:35}}> + </Text>
                         </View>
                     </TouchableOpacity>
                     :
-                    <View>
+                    <TouchableOpacity
+                     style={{width:screenWidth, height:360}}
+                    >
                         <Image source={{ uri: this.state.urlChosen }} style={{width:screenWidth , height:360}} />
                         <TouchableOpacity onPress={() => this.removeImage(this.state.urlChosen)}  style={{position:'absolute', bottom:30, right:40}}>
                             <FontAwesome name='trash' color={'black'} size={40}/>
                         </TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
                     }
                 </View>
 
-                <View style={{ flexDirection:'row', width:screenWidth, justifyContent:'center', alignItems:'center'}}>
+                <View style={{ flexDirection:'row', width:screenWidth, justifyContent:'center', alignItems:'center', flex:1}}>
                     {
                         (this.props.post.photos == undefined || this.props.post.photos?.lenght == 3 || this.props.post.photos?.lenght == 0)
                         ?

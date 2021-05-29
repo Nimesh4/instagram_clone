@@ -1,12 +1,9 @@
-import React, {useState, useEffect, Component} from 'react'
-import {StatusBar} from 'expo-status-bar'
-import { StyleSheet , Image , Text, View, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
-import { FontAwesome } from '@expo/vector-icons'
-import Icon  from 'react-native-vector-icons/FontAwesome'
+import React from 'react'
+import { StyleSheet , Image , Text, View, TouchableOpacity, Dimensions ,TextInput, ScrollView, StatusBar} from 'react-native'
 import { AnyAction, bindActionCreators, Dispatch }  from 'redux'
 import { connect } from 'react-redux'
 import { updateEmail, updatePassword , login} from '../../actions/user'
+import { IconButton } from 'react-native-paper'
 
 const screenHeight = Dimensions.get('window').height
 const screenWidth = Dimensions.get('window').width
@@ -27,66 +24,75 @@ class Login extends React.Component <props>  {
     render(){
 
     return (
-        <View style={styles.container}>
-          <Image source={require('../../assets/backgrounds/back4.jpeg')} style={styles.img}/>
-            <Text style={styles.logo}> instagraam </Text>
+        <View style={styles.maincontainer}>
+          <StatusBar barStyle="light-content" backgroundColor="#000" />
+        <TouchableOpacity
+         style={{ alignItems: "center", paddingTop: 20 }}
+         onPress={() => this.setState({ modalVisible: true })}
+        >
 
-            <View style={{marginTop:100, alignItems:'center'}}>
+        </TouchableOpacity>
+        <ScrollView contentContainerStyle={styles.container}>
+            <Text style={styles.titleText}> Photograam </Text>
 
-            <View style={{width:screenWidth*0.9, marginTop:10}}>
-                <Text style={{left:8}}> Email </Text>
+            <View style={{marginTop:20}}>
+                <TextInput
+                style={styles.textinput}
+                placeholderTextColor={'grey'}
+                placeholder={'example@example.com'}
+                onChangeText={ input => this.props.updateEmail(input)}
+                value={this.props.user.email}
+                />
             </View>
-            <TextInput
-             style={styles.textinput}
-             placeholderTextColor={'grey'}
-             placeholder={'example@example.com'}
-             onChangeText={ input => this.props.updateEmail(input)}
-             value={this.props.user.email}
-            />
 
-            <View style={{width:screenWidth*0.9, marginTop:10}}>
-                <Text style={{left:8}}> Password </Text>
+            <View style={{marginTop:20}}>
+                <TextInput
+                style={styles.textinput}
+                placeholderTextColor={'grey'}
+                placeholder={'passcode@123'}
+                onChangeText={input => this.props.updatePassword(input)}
+                value= {this.props.user.password}
+                secureTextEntry={true}
+                />
             </View>
-
-            <TextInput
-             style={styles.textinput}
-             placeholderTextColor={'grey'}
-             placeholder={'passcode@123'}
-             onChangeText={input => this.props.updatePassword(input)}
-             value= {this.props.user.password}
-             secureTextEntry={true}
-            />
-
-            <View style={{width:screenWidth, alignItems:'center',margin:30}}>
-
+            
             <TouchableOpacity style={styles.button} 
              onPress={() => this.props.login()}>
-               <Text style={{color:'white', fontWeight:'bold', fontSize:20}}> Log In </Text>
+               <Text style={{color:'white', fontWeight:'bold', fontSize:20}}> Sign Up </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{alignItems:'center', flexDirection:'row', margin:5}}
-             onPress={() => this.props.navigation.navigate('Signup')}
-            > 
-
-                <Text style={{fontSize:18}}>Don't Have an account?</Text>
-                <Text style={{fontSize:18, fontWeight:'bold', color:'#0095f6'}}>SignUp!</Text>
+            <View style={{marginTop:20}}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('ForgotPassword')}>
+                  <Text style={{ fontSize: 12, color: "white", fontFamily: "Roboto" }}>
+                  Forgotten your login details?{" "}
+                  <Text style={{ color: "#fff" }}>Get help with signing in.</Text>
+                  </Text>
             </TouchableOpacity>
-
             </View>
-{/* 
-            <View style={styles.container}>
-                <FontAwesome.Button name="google" backgroundColor="transparent" style={{height:40, borderRadius:20, borderColor:"#0a66c2", borderWidth:2 }} color="#0a66c2" >
-                    <Text>Login with Google </Text>
-                </FontAwesome.Button>
+        
+            <View style={[styles.inputWrapper, styles.textWrapper]}>
+                <View style={styles.line} />
+                <Text style={styles.textStyle}>OR</Text>
+            </View>
+
+            {/* <View style={styles.inputWrapper}>
+                <IconButton
+                title="Log in as"
+                onPress={() => this.props.navigation.navigate("AppStack")}
+                />
             </View> */}
 
-            </View>
-
-            <View style={{position:'absolute', bottom:20, justifyContent:'center', alignItems:'center'}}>
-                <Text style={{fontSize:18}} > From </Text>
-                <Text style={{fontSize:20, fontWeight:'bold'}}> Nikist </Text>
-            </View>
-
+            </ScrollView>
+        <TouchableOpacity
+          style={styles.footerContainer}
+          onPress={() => this.props.navigation.navigate("ProfilePicture")}
+        >
+          <Text style={{ color: "white", fontFamily: "Roboto" }}>
+            Don't have an account?<Text style={{ color: "#fff" }}>
+              Sign up.
+            </Text>
+          </Text>
+        </TouchableOpacity> 
         </View>
     )
     }
@@ -108,12 +114,15 @@ export default connect (mapstateToProps, mapDispatchToProps)(Login)
 
 
 const styles = StyleSheet.create({
-    container:{
+    maincontainer:{
         flex:1,
-        backgroundColor:'white',
-        alignItems:'center',
-        //justifyContent:'center',
+        backgroundColor:'#131212',
     },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+      },
     textinput:{
         height:50,
         width:screenWidth*0.9,
@@ -146,5 +155,40 @@ const styles = StyleSheet.create({
         zIndex:-1,
         width:screenWidth,
         height:screenHeight+50
-    }
+    },
+    titleText: {
+        fontFamily: "logo-font",
+        fontSize: 56,
+        color: 'white'
+      },
+      inputWrapper: {
+        marginTop: 20,
+        
+      },
+      textWrapper: {
+        width: screenWidth * 0.9,
+        alignItems: "center",
+        position: "relative"
+      },
+      line: {
+        height: 1,
+        backgroundColor: "#A9A9A9",
+        position: "absolute",
+        top: 7,
+        width: screenWidth * 0.9
+      },
+      textStyle: {
+        fontSize: 16,
+        textAlign: "center",
+        backgroundColor: "white",
+        paddingHorizontal: 8,
+        fontFamily: "logo-font",
+        color: "gray"
+      },
+      footerContainer: {
+        borderTopWidth: 1,
+        borderColor: "gray",
+        alignItems: "center",
+        paddingVertical: 18
+      },
 })
